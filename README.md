@@ -1,5 +1,5 @@
 # PhilippeHARCHOUCHE_6_26032021
-**"Piquante" Application de notation de sauce piquante by SoPekocko
+**Piquante Application de notation de sauce piquante by SoPekocko
 # Installation :
 
 
