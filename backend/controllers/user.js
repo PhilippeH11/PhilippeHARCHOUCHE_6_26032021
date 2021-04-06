@@ -6,6 +6,11 @@ const jwt = require('jsonwebtoken');
 
 // Enregistrement d'un nouvel utilisateur
 exports.signup = (req, res, next) => {
+  const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/ // on utilise un regex pour le mot de passe
+     if (!regexPassword.test(req.body.password)){ 
+        res.status(406).json({ message: 'Non autorisé' })  
+        return false
+     }
     bcrypt.hash(req.body.password, 10).then(
       (hash) => {
         const user = new User({
