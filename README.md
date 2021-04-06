@@ -1,10 +1,10 @@
 # PhilippeHARCHOUCHE_6_26032021
-"Piquante" Application de notation de sauce piquante by SoPekocko
+**"Piquante" Application de notation de sauce piquante by SoPekocko
 # Installation :
 
 
 
-**Cloner le repository.** ** Installer les dépendances **
+**Cloner le repository.** **Installer les dépendances**
 
  Lancer la commande "NPM START" depuis le dossier "FRONTEND", puis se positionner sur le dossier "BACKEND" et taper la commande "NODEMON".
  - Laisser compiler le fronted jusqu'au message compiled successfully !
@@ -15,7 +15,7 @@
 
 
 
-Modèle de données pour sauces
+**Modèle de données pour sauces**
 
 -   **_id**: _String_ — l'identifiant unique créé par MongoDB 
 -   **userId**: _String_ — l'identifiant unique MongoDB de l'utilisateur qui a créé la sauce 
@@ -30,7 +30,7 @@ Modèle de données pour sauces
 -   **usersLiked**: _[String]_ — tableau d'identifiants d'utilisateurs ayant aimé la sauce 
 -   **usersDisliked**: _[String]_ — tableau d'identifiants d'utilisateurs n'ayant pas aimé la sauce 
 
-Modèle de données pour les utilisateurs
+**Modèle de données pour les utilisateurs
 
 -   **email**: _String_ — the user's email address **[unique]** **[mongoose-unique-validator]**
 -   **password**: _String_ — hash of the user's password **[encodé/Hash]**
