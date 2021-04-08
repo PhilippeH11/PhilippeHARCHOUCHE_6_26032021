@@ -1,38 +1,36 @@
 // Prérequis
 const User = require('../models/user');
-//BCRYPT voir PPT
+//BCRYPT 
 const bcrypt = require('bcrypt');
+const pwdValidator = require("password-validator");
 const jwt = require('jsonwebtoken');
+
+//Exiger un mot de passe complexe
+let pwd = new pwdValidator();
+pwd
+.is().min(8) // minimum 8 caractères
+.is().max(25) // maximum 25 caractères
+.has().uppercase() // une majuscule
+.has().lowercase() // une minuscule
+.has().not().spaces() // pas d'espaces
+.has().digits() // un chiffre*/
 
 // Enregistrement d'un nouvel utilisateur
 exports.signup = (req, res, next) => {
-  const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/ // on utilise un regex pour le mot de passe
-     if (!regexPassword.test(req.body.password)){ 
-        res.status(406).json({ message: 'Non autorisé' })  
-        return false
-     }
-    bcrypt.hash(req.body.password, 10).then(
-      (hash) => {
-        const user = new User({
-          email: req.body.email,
-          password: hash
-        });
-        user.save().then(
-          () => {
-            res.status(201).json({
-              message: 'Utilisateur ajouté !'
-            });
-          }
-        ).catch(
-          (error) => {
-            res.status(500).json({
-              error: error
-            });
-          }
-        );
-      }
-    );
-  };
+  if (!pwd.validate(req.body.password)) {
+    return res.status(400).json({error: "1maj 1min 1chiffre minimu 8car max 25car!"})
+} else {
+    bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+        const user = new User({email: req.body.email, password: hash})
+        
+        user.save()
+            .then(() => res.status(201).json({ message: 'Signup : Utilisateur créé avec succès !' }))
+            .catch(error => res.status(400).json({ error }));
+        })
+    .catch(error => res.status(500).json({ error }));
+}
+};
 
 
 exports.login = (req, res, next) => {

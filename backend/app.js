@@ -32,6 +32,7 @@ mongoose.connect('mongodb+srv://PhilH11:qMZT0wcKZTUdxjzN@cluster0.ohchn.mongodb.
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 
+// Sécurisation des en-têtes
 app.use(helmet());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
