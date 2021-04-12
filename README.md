@@ -12,7 +12,10 @@
  - Rendez vous sur votre navigateur sur le port 4200, à l'adresse suivante : localhost:4200/
 
  
-
+** Pour des raisons pratiques le mot de passe à la base de données des précédents commit a été changé.
+** A la racine un exemple de fichier de connection ".env" avec des identifiants et mot de passe factices.
+** Les identifiants et mot de passe corrects seront communiqués par voie de mail.
+** Merci de votre compréhension
 
 
 **Modèle de données pour sauces**
